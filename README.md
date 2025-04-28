@@ -11,3 +11,14 @@ Docker (Containerization)
 GitHub Actions (CI/CD)
 Machine Learning: Random Forest Classifier
 Data Handling: Pandas, NumPy
+
+NOTE-
+Since GitHub has a file size limit of 100 MB for uploads, the model.pkl file (which is crucial for the churn prediction model) exceeds this limit. Therefore, we store the model file on Google Drive and download it during the Docker build process.
+
+In the Dockerfile, the following command downloads the model file directly from Google Drive:
+
+Dockerfile
+Copy
+Edit
+RUN curl -L -o model.pkl "https://drive.google.com/uc?export=download&id=YOUR_FILE_ID"
+This approach ensures that the model is available during containerization without exceeding GitHub's file size limitations.
