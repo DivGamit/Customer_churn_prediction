@@ -23,6 +23,12 @@ jobs:
         docker run -d -p 8501:8501 --name churn-container telecom-churn-app
         sleep 10
 
+    - name: Check Docker container status
+      run: docker ps -a 
+
+    - name: Check Docker container logs
+      run: docker logs churn-container 
+
     - name: Test Streamlit App
       run: curl http://localhost:8501
 
